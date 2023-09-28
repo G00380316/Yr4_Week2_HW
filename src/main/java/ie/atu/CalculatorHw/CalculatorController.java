@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculatorController {
 
     @GetMapping("/calculate")
-    public int calculate(@RequestParam int num1,@RequestParam int num2, @RequestParam String operation){
+    public String calculate(@RequestParam int num1,@RequestParam int num2, @RequestParam String operation){
         int answer = 0;
 
         if (operation.equals("add")){
@@ -27,7 +27,9 @@ public class CalculatorController {
             answer = num1 / num2; // http://localhost:8080/calculate?num1=20&num2=10&operation=subtract
         }
 
-        return answer;
+        String print = "\"operation\": " + "\""+ operation + "\", " + "\"total\": " + answer;
+
+        return print;
     }
 
 }
